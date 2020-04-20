@@ -22,7 +22,8 @@ public class UDPServer
         this.udpSocket = new DatagramSocket(this.port);
     }
 
-    void list ( Consumer<String> callback ) throws IOException {
+    void listen ( Consumer<String> callback ) throws IOException
+    {
         running = true;
         while(running)
         {
