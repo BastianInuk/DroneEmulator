@@ -39,7 +39,7 @@ public class UDPServer
                 running = false;
                 continue;
             } else {
-                callback.accept(received);
+                callback.accept(received); // = callback(received)
             }
         }
         udpSocket.close();
