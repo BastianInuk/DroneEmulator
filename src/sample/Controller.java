@@ -21,12 +21,26 @@ public class Controller
         }
     }
 
+    void receiver(String response)
+    {
+        switch (response){
+            case "up": // move up
+                break;
+            case "down": // move down
+                break;
+            case "left": // move left
+                break;
+            case "right": // Move down
+                break;
+            default: // stop
+        }
+        System.out.println(response); // Print response
+    }
+
     void run()
     {
         try {
-            udpServer.listen((String response) -> {
-                System.out.println(response); // Print response
-            });
+            udpServer.listen(this::receiver);
         } catch (IOException e) {
             System.out.println(e);
         }
