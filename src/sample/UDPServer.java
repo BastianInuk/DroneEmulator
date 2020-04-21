@@ -14,7 +14,6 @@ public class UDPServer
     private DatagramSocket udpSocket;
     private int port;
     private boolean running;
-    private byte[] buffer = new byte[256];
 
     public UDPServer (int port) throws SocketException
     {
@@ -27,6 +26,7 @@ public class UDPServer
         running = true;
         while(running)
         {
+            byte[] buffer = new byte[256];
             var packet = new DatagramPacket(buffer, buffer.length);
             udpSocket.receive(packet);
 
