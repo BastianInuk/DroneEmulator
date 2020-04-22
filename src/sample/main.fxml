@@ -22,9 +22,9 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ComboBox fx:id="colorPicker" prefWidth="150.0" promptText="choose a color" translateX="24.0" translateY="116.0" />
-            <Button fx:id="startBtn" mnemonicParsing="false" text="Start" translateX="-70.0" translateY="225.0" />
-            <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#closeProgram" text="Exit" translateX="84.0" translateY="260.0" />
+            <ComboBox prefWidth="150.0" promptText="choose a color" translateX="24.0" translateY="116.0" />
+            <Button mnemonicParsing="false" text="Start" translateX="-70.0" translateY="225.0" />
+            <Button mnemonicParsing="false" text="Exit" translateX="84.0" translateY="260.0" />
          </children>
       </FlowPane>
    </left>
