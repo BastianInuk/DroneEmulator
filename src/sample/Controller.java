@@ -7,42 +7,20 @@ public class Controller
 {
     public static void main(String[] args){
         Controller controller = new Controller();
-        controller.run();
     }
 
     UDPServer udpServer;
 
-    Controller()
-    {
+    Controller() {
         try {
-            udpServer = new UDPServer(4000);
+            udpServer = new UDPServer(4000, this);
+            new Thread(udpServer).start();
         } catch (SocketException e) {
             System.out.println(e);
         }
     }
 
-    void receiver(String response)
-    {
-        switch (response){
-            case "up": // move up
-                break;
-            case "down": // move down
-                break;
-            case "left": // move left
-                break;
-            case "right": // Move down
-                break;
-            default: // stop
-        }
-        System.out.println(response); // Print response
-    }
-
-    void run()
-    {
-        try {
-            udpServer.listen(this::receiver);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+    public void moveFwd() {
+        // implement move forward
     }
 }

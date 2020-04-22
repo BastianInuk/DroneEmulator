@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.control.Control;
+
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.DatagramPacket;
@@ -9,16 +11,31 @@ import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class UDPServer
+public class UDPServer implements Runnable
 {
     private DatagramSocket udpSocket;
     private int port;
     private boolean running;
+    private Controller controller;
 
-    public UDPServer (int port) throws SocketException
+    public UDPServer (int port, Controller controller) throws SocketException
     {
         this.port = port;
         this.udpSocket = new DatagramSocket(this.port);
+
+        this.controller = controller;
+    }
+
+    void
+
+    public void run() {
+        try {
+            listen((String packet) -> {
+                System.out.println(packet);
+            });
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     void listen ( Consumer<String> callback ) throws IOException
