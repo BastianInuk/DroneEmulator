@@ -26,8 +26,6 @@ public class UDPServer implements Runnable
         this.controller = controller;
     }
 
-    void
-
     public void run() {
         try {
             listen((String packet) -> {
