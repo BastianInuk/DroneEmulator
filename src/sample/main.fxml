@@ -13,7 +13,7 @@
 <?import javafx.scene.text.TextFlow?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="sample.Controller" fx:id="BorderPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,14 +22,14 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ComboBox prefWidth="150.0" promptText="choose a color" translateX="24.0" translateY="116.0" />
-            <Button mnemonicParsing="false" text="Start" translateX="-70.0" translateY="225.0" />
-            <Button mnemonicParsing="false" text="Exit" translateX="84.0" translateY="260.0" />
+            <ComboBox fx:id="colorPicker" prefWidth="150.0" promptText="choose a color" translateX="24.0" translateY="116.0" />
+            <Button fx:id="startBtn" mnemonicParsing="false" text="Start" translateX="-70.0" translateY="225.0" />
+            <Button fx:id="exitBtn" mnemonicParsing="false" text="Exit" translateX="84.0" translateY="260.0" />
          </children>
       </FlowPane>
    </left>
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
+      <MenuBar fx:id="menubar" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -50,7 +50,7 @@
       </MenuBar>
    </top>
    <center>
-      <Canvas height="200.0" scaleX="1.5" scaleY="1.5" translateX="-45.0" width="200.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="ourCanvas" height="155.0" scaleX="1.5" scaleY="1.5" translateX="32.0" width="142.0" BorderPane.alignment="CENTER" />
    </center>
    <right>
       <TextFlow prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
