@@ -24,20 +24,19 @@ import javafx.stage.Stage;
 
 public class Controller
 {
-    Pane p = new Pane();
     public static void main(String[] args){
         Controller controller = new Controller();
     }
 
     UDPServer udpServer;
-    /*Controller() {
+    public Controller() {
         try {
             udpServer = new UDPServer(4000, this);
             new Thread(udpServer).start();
         } catch (SocketException e) {
             System.out.println(e);
         }
-    }*/
+    }
 
     public void moveFwd() {
         // implement move forward
@@ -61,18 +60,15 @@ public class Controller
     private Canvas ourCanvas;
 
     public void drawShapes(){
-        
+
         GraphicsContext graphics = ourCanvas.getGraphicsContext2D();
-        //graphics.strokeOval(10, 10, 10, 10);
         graphics.setFill(Color.ORANGE);
-        graphics.fillRect(20, 20, 15, 15);
+        graphics.fillRect(50, 50, 15, 15);
 
     }
 
-
     @FXML
     public void initialize() {
-        System.out.println("second");
         drawShapes();
     }
 }
