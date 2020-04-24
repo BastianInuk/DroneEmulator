@@ -23,6 +23,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Controller
+    implements UDPListener
 {
     public static void main(String[] args){
         Controller controller = new Controller();
@@ -38,6 +39,9 @@ public class Controller
         }
     }
 
+    public void listen(String received) {
+        System.out.println("Received: " + received);
+    }
     public void moveFwd() {
         // implement move forward
     }

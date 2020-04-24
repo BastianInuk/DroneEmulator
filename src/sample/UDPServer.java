@@ -15,27 +15,25 @@ public class UDPServer implements Runnable
     private DatagramSocket udpSocket;
     private int port;
     private boolean running;
-    private Controller controller;
+    private UDPListener listener;
 
-    public UDPServer (int port, Controller controller) throws SocketException
+    public UDPServer (int port, UDPListener listener) throws SocketException
     {
         this.port = port;
         this.udpSocket = new DatagramSocket(this.port);
 
-        this.controller = controller;
+        this.listener = listener;
     }
 
     public void run() {
         try {
-            listen((String packet) -> {
-                System.out.println(packet);
-            });
+            listen();
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 
-    void listen ( Consumer<String> callback ) throws IOException
+    void listen () throws IOException
     {
         running = true;
         while(running)
@@ -53,8 +51,9 @@ public class UDPServer implements Runnable
                 running = false;
                 continue;
             } else {
-                callback.accept(received); // = callback(received)
+                listener.listen(received);
             }
+
         }
         udpSocket.close();
     }
