@@ -25,12 +25,17 @@ import javafx.stage.Stage;
 public class Controller
     implements UDPListener
 {
+    private int xCenter;
+    private int yCenter;
+    private int size;
+
     public static void main(String[] args){
         Controller controller = new Controller();
     }
 
     UDPServer udpServer;
-    public Controller() {
+    public Controller()
+    {
         try {
             udpServer = new UDPServer(4000, this);
             new Thread(udpServer).start();
@@ -39,12 +44,65 @@ public class Controller
         }
     }
 
-    public void listen(String received) {
+    public void listen(String received)
+    {
         System.out.println("Received: " + received);
+        switch (received) {
+            case "moveUp":
+                moveUp();
+                break; // zoom in (make bigger)
+            case "moveDown":
+                moveDown();
+                break; // zoom out (make smaller)
+            case "moveFwd":
+                moveFwd();
+                break;
+            case "moveBkwd":
+                moveBkwd();
+                break;
+            case "moveLeft":
+                moveLeft();
+                break;
+            case "moveRight":
+                moveRight();
+                break;
+        }
+        drawShapes();
     }
-    public void moveFwd() {
+
+    public void moveUp()
+    {
+
+    }
+
+    public void moveDown()
+    {
+
+    }
+
+    public void moveFwd()
+    {
         // implement move forward
+        System.out.println("Old x: " + xCenter);
+        xCenter=xCenter+1;
+        System.out.println("New x: " + xCenter);
     }
+
+    public void moveBkwd()
+    {
+
+    }
+
+    public void moveLeft()
+    {
+
+    }
+
+    public void moveRight()
+    {
+
+    }
+
     @FXML
     private BorderPane BorderPane1;
 
@@ -64,15 +122,23 @@ public class Controller
     private Canvas ourCanvas;
 
     public void drawShapes(){
-
+        System.out.println("Rendering box at " + xCenter + "," + yCenter);
         GraphicsContext graphics = ourCanvas.getGraphicsContext2D();
         graphics.setFill(Color.ORANGE);
-        graphics.fillRect(50, 50, 15, 15);
+        graphics.fillRect(xCenter - (size / 2), yCenter - (size / 2), size, size);
 
     }
 
     @FXML
     public void initialize() {
+        size = 16;
+
+        Double canvasYCenter = ourCanvas.getHeight() / 2.0 ;
+        Double canvasXCenter = ourCanvas.getWidth() / 2.0;
+
+        xCenter = canvasXCenter.intValue();
+        yCenter = canvasYCenter.intValue();
+
         drawShapes();
     }
 }
