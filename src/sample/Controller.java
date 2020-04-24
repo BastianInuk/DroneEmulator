@@ -102,12 +102,12 @@ public class Controller
 
     public void moveLeft()
     {
-        xCenter++;
+        xCenter--;
     }
 
     public void moveRight()
     {
-        xCenter--;
+        xCenter++;
     }
 
     @FXML
