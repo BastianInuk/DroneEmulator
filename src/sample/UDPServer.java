@@ -38,7 +38,7 @@ public class UDPServer implements Runnable
         running = true;
         while(running)
         {
-            byte[] buffer = new byte[256];
+            byte[] buffer = new byte[5];
             var packet = new DatagramPacket(buffer, buffer.length);
             udpSocket.receive(packet);
 

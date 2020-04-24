@@ -47,60 +47,67 @@ public class Controller
     public void listen(String received)
     {
         System.out.println("Received: " + received);
+        System.out.println("The package is " + received.length() + " bytes long");
         switch (received) {
-            case "moveUp":
+            case "moveU":
                 moveUp();
                 break; // zoom in (make bigger)
-            case "moveDown":
+            case "moveD":
                 moveDown();
                 break; // zoom out (make smaller)
-            case "moveFwd":
+            case "moveF":
                 moveFwd();
                 break;
-            case "moveBkwd":
+            case "moveB":
                 moveBkwd();
                 break;
-            case "moveLeft":
+            case "moveL":
                 moveLeft();
                 break;
-            case "moveRight":
+            case "moveR":
                 moveRight();
                 break;
+            default:
+                System.out.println("Invalid command");
         }
         drawShapes();
     }
 
     public void moveUp()
     {
-
+        if(size <= ourCanvas.getWidth())
+        {
+            size++;
+        }
     }
 
     public void moveDown()
     {
-
+        if(size >= 16)
+        {
+            size--;
+        }
     }
 
     public void moveFwd()
     {
         // implement move forward
-        System.out.println("Old x: " + xCenter);
-        xCenter=xCenter+1;
-        System.out.println("New x: " + xCenter);
+        yCenter--;
     }
 
     public void moveBkwd()
     {
-
+        yCenter++;
     }
 
     public void moveLeft()
     {
-
+        xCenter++;
     }
 
     public void moveRight()
     {
-
+        xCenter--;
     }
 
     @FXML
@@ -124,6 +131,12 @@ public class Controller
     public void drawShapes(){
         System.out.println("Rendering box at " + xCenter + "," + yCenter);
         GraphicsContext graphics = ourCanvas.getGraphicsContext2D();
+
+        // Clear the canvas
+        graphics.setFill(Color.WHITE);
+        graphics.fillRect(0,0,ourCanvas.getWidth(), ourCanvas.getHeight());
+
+        // Draw drone
         graphics.setFill(Color.ORANGE);
         graphics.fillRect(xCenter - (size / 2), yCenter - (size / 2), size, size);
 
