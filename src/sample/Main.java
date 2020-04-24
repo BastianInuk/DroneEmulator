@@ -12,7 +12,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         primaryStage.setTitle("Drone Emulator");
+        //creates new scene
         primaryStage.setScene(new Scene(root, 600, 400));
+        //shows new scene upon program start
         primaryStage.show();
 
     }

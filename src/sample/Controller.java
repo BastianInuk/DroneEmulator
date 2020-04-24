@@ -43,7 +43,8 @@ public class Controller
             System.out.println(e);
         }
     }
-
+    // invoking a method that receives commands via UDP
+    // the commands transforms the shape's position and size in the canvas
     public void listen(String received)
     {
         System.out.println("Received: " + received);
@@ -72,7 +73,7 @@ public class Controller
         }
         drawShapes();
     }
-
+    // size modifier
     public void moveUp()
     {
         if(size <= ourCanvas.getWidth())
@@ -88,7 +89,7 @@ public class Controller
             size--;
         }
     }
-
+    // direction modifier
     public void moveFwd()
     {
         // implement move forward
@@ -127,7 +128,7 @@ public class Controller
 
     @FXML
     private Canvas ourCanvas;
-
+    // shapes constructor
     public void drawShapes(){
         System.out.println("Rendering box at " + xCenter + "," + yCenter);
         GraphicsContext graphics = ourCanvas.getGraphicsContext2D();
@@ -142,6 +143,7 @@ public class Controller
 
     }
 
+    //Invoking drawShapes method and updates the shape's properties
     @FXML
     public void initialize() {
         size = 16;
