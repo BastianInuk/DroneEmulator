@@ -71,6 +71,7 @@ public class Controller
             default:
                 System.out.println("Invalid command");
         }
+        // Shape doesn't redraw on change, calling manually after change is applied
         drawShapes();
     }
     // size modifier
