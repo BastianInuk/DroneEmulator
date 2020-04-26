@@ -34,6 +34,8 @@ public class Controller
             udpServer = new UDPServer(4000, this);
             new Thread(udpServer).start();
 
+            colours = new ArrayList<Color>();
+
             colours.add(Color.ORANGE);
             colours.add(Color.BLUE);
             colours.add(Color.BEIGE);
