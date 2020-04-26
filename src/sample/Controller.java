@@ -82,6 +82,7 @@ public class Controller
     }
     public void changeColour()
     {
+        // Cycle through colours
         if(currentColour == colours.size()-1){
             currentColour = 0;
         } else {
@@ -95,6 +96,7 @@ public class Controller
     // size modifier
     public void moveFwd()
     {
+        // Max size is the siz of the canvas
         if(size <= ourCanvas.getWidth())
         {
             size++;
@@ -103,6 +105,7 @@ public class Controller
 
     public void moveBkwd()
     {
+        // Out of bound detection
         if(size >= 16)
         {
             size--;
@@ -111,6 +114,7 @@ public class Controller
     // direction modifier
     public void moveUp()
     {
+        // Out of bound detection
         if (yCenter - size/2 > 0)
         {
             yCenter--;
@@ -119,6 +123,7 @@ public class Controller
 
     public void moveDown()
     {
+        // Out of bound detection
         if (yCenter + size/2 < ourCanvas.getHeight())
         {
             yCenter++;
@@ -127,6 +132,7 @@ public class Controller
 
     public void moveLeft()
     {
+        // Out of bound detection
         if (xCenter - size/2 > 0)
         {
             xCenter--;
@@ -134,6 +140,7 @@ public class Controller
     }
 
     public void moveRight() {
+        // Out of bound detection
         if (xCenter + size / 2 < ourCanvas.getWidth())
         {
             xCenter++;
