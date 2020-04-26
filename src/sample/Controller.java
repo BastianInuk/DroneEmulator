@@ -1,26 +1,16 @@
 package sample;
 
-import java.io.IOException;
 import java.net.SocketException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.ArrayList;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 public class Controller
     implements UDPListener
@@ -28,6 +18,10 @@ public class Controller
     private int xCenter;
     private int yCenter;
     private int size;
+
+    ArrayList<Color> colours;
+    int currentColour;
+    Color boxColour;
 
     public static void main(String[] args){
         Controller controller = new Controller();
@@ -39,6 +33,13 @@ public class Controller
         try {
             udpServer = new UDPServer(4000, this);
             new Thread(udpServer).start();
+
+            colours.add(Color.ORANGE);
+            colours.add(Color.BLUE);
+            colours.add(Color.BEIGE);
+            colours.add(Color.RED);
+
+            boxColour = colours.get(0);
         } catch (SocketException e) {
             System.out.println(e);
         }
@@ -68,12 +69,27 @@ public class Controller
             case "moveR":
                 moveRight();
                 break;
+            case "chClr":
+                changeColour();
+                break;
             default:
                 System.out.println("Invalid command");
         }
         // Shape doesn't redraw on change, calling manually after change is applied
         drawShapes();
     }
+    public void changeColour()
+    {
+        if(currentColour == colours.size()){
+            currentColour = 0;
+        } else {
+            currentColour++;
+        }
+
+        boxColour = colours.get(currentColour);
+    }
+
+
     // size modifier
     public void moveUp()
     {
@@ -139,7 +155,7 @@ public class Controller
         graphics.fillRect(0,0,ourCanvas.getWidth(), ourCanvas.getHeight());
 
         // Draw drone
-        graphics.setFill(Color.ORANGE);
+        graphics.setFill(boxColour);
         graphics.fillRect(xCenter - (size / 2), yCenter - (size / 2), size, size);
 
     }
