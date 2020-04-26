@@ -18,7 +18,7 @@ public class Controller
     private int xCenter;
     private int yCenter;
     private int size;
-
+    //arrayList of colours
     ArrayList<Color> colours;
     int currentColour;
     Color boxColour;
@@ -35,7 +35,7 @@ public class Controller
             new Thread(udpServer).start();
 
             colours = new ArrayList<Color>();
-
+            //adds colours to the arrayList
             colours.add(Color.ORANGE);
             colours.add(Color.BLUE);
             colours.add(Color.BEIGE);
@@ -80,6 +80,7 @@ public class Controller
         // Shape doesn't redraw on change, calling manually after change is applied
         drawShapes();
     }
+    //colour changer
     public void changeColour()
     {
         if(currentColour == colours.size()-1){
