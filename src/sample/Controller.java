@@ -91,7 +91,7 @@ public class Controller
 
 
     // size modifier
-    public void moveUp()
+    public void moveFwd()
     {
         if(size <= ourCanvas.getWidth())
         {
@@ -99,7 +99,7 @@ public class Controller
         }
     }
 
-    public void moveDown()
+    public void moveBkwd()
     {
         if(size >= 16)
         {
@@ -107,13 +107,13 @@ public class Controller
         }
     }
     // direction modifier
-    public void moveFwd()
+    public void moveUp()
     {
         // implement move forward
         yCenter--;
     }
 
-    public void moveBkwd()
+    public void moveDown()
     {
         yCenter++;
     }
